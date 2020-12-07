@@ -66,6 +66,8 @@ class MonoCamera {
   std::string guid_;
   std::string camera_info_url_;
   bool show_debug_prints_;
+  bool use_ros_timestamp_;
+  double tick_freq_;
 
   image_transport::ImageTransport it_;
   // ROS Camera publisher

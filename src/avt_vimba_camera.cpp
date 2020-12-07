@@ -410,6 +410,12 @@ double AvtVimbaCamera::getTimestamp(void) {
   return timestamp;
 }
 
+int AvtVimbaCamera::getTickFrequency(void) {
+  VmbInt64_t tickFreq = -1;
+  getFeatureValue("GevTimestampTickFrequency",tickFreq);
+  return ((int) tickFreq);
+}
+
 // Template function to GET a feature value from the camera
 template<typename T>
 bool AvtVimbaCamera::getFeatureValue(const std::string& feature_str, T& val) {
@@ -1037,7 +1043,7 @@ void AvtVimbaCamera::updateWhiteBalanceConfig(Config& config){
   }
 }
 
-/** Change the Binning and Decimation configuration */
+/** Change the PTP Mode configuration */
 void AvtVimbaCamera::updatePtpModeConfig(Config& config) {
   bool changed = false;
   if (config.ptp_mode != config_.ptp_mode || on_init_) {
