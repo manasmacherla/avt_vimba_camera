@@ -282,6 +282,7 @@ void AvtVimbaCamera::updateConfig(Config& config) {
   updatePixelFormatConfig(config);
   updateAcquisitionConfig(config);
   updateIrisConfig(config);
+  updatePtpGateTimeConfig(config);
   config_ = config;
 
   if (on_init_) {
@@ -1054,6 +1055,21 @@ void AvtVimbaCamera::updatePtpModeConfig(Config& config) {
   if(changed && show_debug_prints_){
     ROS_INFO_STREAM("New PTP config (" << config.frame_id << ") : "
       << "\n\tPtpMode                   : " << config.ptp_mode << " was " << config_.ptp_mode);
+  }
+}
+
+/** Updating the Ptp acquisition gate time */
+void AvtVimbaCamera::updatePtpGateTimeConfig(Config& config) {
+  bool changed = false;
+  if (config.acquisition_gate_time != config_.acquisition_gate_time || on_init_) {
+    changed = true;
+    setFeatureValue("PtpAcquisitionGateTime",
+                    static_cast<VmbInt64_t>(config.acquisition_gate_time));
+  }
+
+  if(changed && show_debug_prints_){
+    ROS_INFO_STREAM("New PTPGateTime config (" << config.frame_id << ") : "
+      << "\n\tPtpAcquisitionGateTime     : " << config.acquisition_gate_time << " was " << config_.acquisition_gate_time);
   }
 }
 
