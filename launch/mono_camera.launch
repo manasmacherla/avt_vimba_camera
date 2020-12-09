@@ -55,6 +55,6 @@
     <param name="width" value="$(arg width)"/>
     <param name="height" value="$(arg height)"/>
     <param name="stream_bytes_per_second" value="$(arg stream_bytes_per_second)"/>
-    <param name="acquisition_gate_time" value=10000000000/>
+    <param name="acquisition_gate_time" value="1000"/>
   </node>
 </launch>
