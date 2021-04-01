@@ -204,6 +204,13 @@ void AvtVimbaCamera::start(std::string ip_str, std::string guid_str, bool debug_
                     " not implemented.");
     camera_state_ = ERROR;
   }
+
+  // set up a callback for PTP synchronization
+  VmbErrorType err;
+  FeaturePtr pFeature;
+  err = vimba_camera_ptr_->GetFeatureByName("PtpStatus", pFeature);
+  pFeature->RegisterObserver( IFeatureObserverPtr( new PtpStatusObserver()));
+
   updater_.update();
 }
 

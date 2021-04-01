@@ -38,6 +38,7 @@
 #include <avt_vimba_camera/AvtVimbaCameraConfig.h>
 #include <avt_vimba_camera/frame_observer.h>
 #include <avt_vimba_camera/avt_vimba_api.h>
+#include <avt_vimba_camera/ptp_status_observer.h>
 
 #include <diagnostic_updater/diagnostic_updater.h>
 #include <diagnostic_updater/publisher.h>
@@ -51,6 +52,7 @@ using AVT::VmbAPI::VimbaSystem;
 using AVT::VmbAPI::CameraPtr;
 using AVT::VmbAPI::FramePtr;
 using AVT::VmbAPI::IFrameObserverPtr;
+using AVT::VmbAPI::IFeatureObserverPtr;
 
 namespace avt_vimba_camera {
 
@@ -167,10 +169,10 @@ class AvtVimbaCamera {
   void updateROIConfig(Config& config);
   void updateBandwidthConfig(Config& config);
   void updatePixelFormatConfig(Config& config);
+  void updatePtpGateTimeConfig(Config& config);
   void updatePtpModeConfig(Config& config);
   void updateGPIOConfig(Config& config);
   void updateIrisConfig(Config& config);
-  void updatePtpGateTimeConfig(Config& config);
 
   void getCurrentState(diagnostic_updater::DiagnosticStatusWrapper &stat);
 

@@ -32,6 +32,7 @@
 
 #include <avt_vimba_camera/mono_camera.h>
 
+
 #define DEBUG_PRINTS 1
 
 namespace avt_vimba_camera {

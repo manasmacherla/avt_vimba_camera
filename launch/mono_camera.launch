@@ -25,6 +25,7 @@
   <arg name="height" default="1440" doc="Height of the image (pixels)"/>
   <arg name="stream_bytes_per_second" default="45000000" doc="Stream bandwidth (B/s)"/>
   <arg name="image_proc" default="false"/>
+  <arg name="ptp_mode" default="Slave"/>
 
   <group if="$(arg image_proc)" ns="$(arg name)">
     <node name="image_proc" pkg="image_proc" type="image_proc"/>
@@ -56,5 +57,6 @@
     <param name="height" value="$(arg height)"/>
     <param name="stream_bytes_per_second" value="$(arg stream_bytes_per_second)"/>
     <param name="acquisition_gate_time" value="1000"/>
+    <param name="ptp_mode" value="$(arg ptp_mode)"/>
   </node>
 </launch>

@@ -1,10 +1,11 @@
 <launch>
+<group ns="stereo_left">
   <arg name="name" default="camera" doc="The name of the camera"/>
   <arg name="frame_id" default="camera" doc="The frame id of the camera"/>
-  <arg name="ip" default="" doc="The IP for the camera to connect to"/>
-  <arg name="guid" default="" doc="The GUID for the camera to connect to"/>
+  <arg name="ip" default="169.254.62.66" doc="The IP for the camera to connect to"/>
+  <arg name="guid" default="50-0536953249" doc="The GUID for the camera to connect to"/>
   <arg name="camera_info_url" default="file://$(find avt_vimba_camera)/calibrations/calibration_50-0503343290.yaml"/>
-  <arg name="acquisition_rate" default="10" doc="Camera framerate (Hz)"/>
+  <arg name="acquisition_rate" default="33" doc="Camera framerate (Hz)"/>
 
   <include file="$(find avt_vimba_camera)/launch/mono_camera.launch">
     <arg name="name" value="$(arg name)"/>
@@ -20,4 +21,34 @@
     <arg name="height" value="1544"/>
     <arg name="stream_bytes_per_second" value="119824282"/>
   </include>
+</group>
+ 
 </launch>
+
+  <!-- <group ns="stereo_right">
+  <arg name="name" default="camera" doc="The name of the camera"/>
+  <arg name="frame_id" default="camera" doc="The frame id of the camera"/>
+  <arg name="ip" default="" doc="The IP for the camera to connect to"/>
+  <arg name="guid" default="" doc="The GUID for the camera to connect to"/>
+  <arg name="camera_info_url" default="file://$(find avt_vimba_camera)/calibrations/calibration_50-0503343290.yaml"/>
+  <arg name="acquisition_rate" default="33" doc="Camera framerate (Hz)"/>
+
+  <include file="$(find avt_vimba_camera)/launch/mono_camera.launch">
+    <arg name="name" value="$(arg name)"/>
+    <arg name="frame_id" value="$(arg frame_id)"/>
+    <arg name="ip" value="$(arg ip)"/>
+    <arg name="guid" value="$(arg guid)"/>
+    <arg name="camera_info_url" value="$(arg camera_info_url)"/>
+    <arg name="acquisition_rate" value="$(arg acquisition_rate)"/>
+
+
+    <arg name="pixel_format" value="BayerRG8"/>
+    <arg name="width" value="2064"/>
+    <arg name="height" value="1544"/>
+    <arg name="stream_bytes_per_second" value="119824282"/>
+  </include>
+  </group> -->
+
+   
+
+
